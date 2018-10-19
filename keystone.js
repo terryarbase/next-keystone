@@ -9,7 +9,6 @@ const configuration = require(`${global.__base}/config`);
 // const cluster = require('cluster');
 // const processor = require('os').cpus();
 
-
 const {
     dbHost,
     dbName,
@@ -18,6 +17,7 @@ const {
     port,
     cookieSecret,
     adminPath,
+    appDomain,
 } = configuration;
 
 var dbUrl = `mongodb://${dbHost}/${dbName}`;
@@ -30,7 +30,8 @@ keystone.init({
     'brand': 'Next Keystone Content Management',
     'mongo': dbUrl,
     'port': port,
-    'back url': false,
+    'back url': true,
+    'front url': appDomain,
     'signin logo': '/images/logo.png',
     // 'sass': 'public',
     'static': `${global.__base}/static`,
