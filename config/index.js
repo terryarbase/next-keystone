@@ -16,7 +16,7 @@ const commonSetting = {
     imageMineTypeAllowed: ['image/jpeg', 'image/jpg', 'image/png'],
     attachmentMineTypeAllowed: ['application/pdf'],
     cookieSecret: 'P8@D/30,Svd1TL1a6]17%;t6QM13>4:OEbu3o#K8bTu>;SRT-!mFeK1plGjan5a',
-    adminPath: 'web-admin',
+    adminPath: 'webadmin',
 };
 
 const localhostSetting = {
