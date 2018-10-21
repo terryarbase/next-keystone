@@ -1,22 +1,21 @@
-import { Component } from 'react';
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
-class App extends Component {
-
-  render() {
-  	const a = { test: 1 };
-  	const b = {
-  		...a,
-  		...{
-  			test: 2,
-  		},
-  	};
-  	console.log(b);
-    return (
-      <div className='container'>
-        test
-      </div>
-    );
-  };
+class Page extends Component {
+    render() {
+    	// console.log('>>1>>>', this.props);
+        return (
+            <div>
+                Welcome to the Next KeystoneJS
+            </div>
+        )
+    }
 }
 
-export default App;
+export default connect(
+  (state) => {
+  	console.log(state.toJS());
+  	return {};
+  },
+  (dispatch) => ({})
+)(Page);
