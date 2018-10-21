@@ -5,7 +5,7 @@ import withRedux from 'next-redux-wrapper';
 import initStore from '../client/store';
 
 class RootApp extends App {
-  static async getInitialProps({Component, ctx}) {
+  static async getInitialProps({ Component, ctx }) {
 
       const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 

@@ -1,0 +1,7 @@
+.higherLink{
+	font-style: italic;
+	text-decoration: none;
+	&:hover{
+		text-decoration: underline;
+	}
+}
