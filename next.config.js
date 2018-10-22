@@ -1,5 +1,6 @@
-const withSass = require('@zeit/next-sass');
-const path = require('path');
+const withSass 	= require('@zeit/next-sass');
+const path 		= require('path');
+console.log(path.resolve(__dirname, 'static/styles'));
 
 module.exports = withSass({
 	cssModules: true,
@@ -16,7 +17,8 @@ module.exports = withSass({
 	    config.resolve = {
 		    alias: {
 		    	Styles: path.resolve(__dirname, 'static/styles'),
-		    	Components: path.resolve(__dirname, 'components/')
+		    	Components: path.resolve(__dirname, 'components/'),
+		    	Client: path.resolve(__dirname, 'client/'),
 		    },
 		};
 	    return config;

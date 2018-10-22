@@ -1,7 +1,7 @@
-const keystone 	= require('keystone');
-const jwt 		= require('jsonwebtoken');
+const keystone = require('keystone');
+const jwt = require('jsonwebtoken');
 
-const generateToken = payload => {
+const generateToken = payload=> {
 	return jwt.sign(payload, keystone.get('cookie secret'), {
 		expiresIn: '1h'
 	});

@@ -15,7 +15,7 @@ const commonSetting = {
     crmLockMin: 5,  // mintues to lock
     imageMineTypeAllowed: ['image/jpeg', 'image/jpg', 'image/png'],
     attachmentMineTypeAllowed: ['application/pdf'],
-    cookieSecret: 'P8@D/30,Svd1TL1a6]17%;t6QM13>4:OEbu3o#K8bTu>;SRT-!mFeK1plGjan5a',
+    cookieSecret: 'OdFT|KznqROQfMXNP8[KN>.>7Wm3tvAUp+c+8yG:d8J!Ix[iT^[Zvm*8&wc=,',
     adminPath: 'webadmin',
 };
 

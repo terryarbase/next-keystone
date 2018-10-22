@@ -1,4 +1,4 @@
-import request from '../../../utils/request';
+import request from 'Client/utils/request';
 // Action Types
 import {
   	COMMON_REGISTER_APP,
@@ -7,24 +7,32 @@ import {
 } from '../types';
 
 export const registerApplicationFetch = () => ({
-  	type: 'COMMON_REGISTER_APP',
+  	type: COMMON_REGISTER_APP,
 });
 export const registerApplicationSuccess = data => ({
-  	type: 'COMMON_REGISTER_APP_SUCCESS',
+  	type: COMMON_REGISTER_APP_SUCCESS,
   	data,
 });
 export const registerApplicationFail = err => ({
-  	type: 'COMMON_REGISTER_APP_FAIL',
+  	type: COMMON_REGISTER_APP_FAIL,
  	err,
 });
 
-export const registerApplication = () => async(dispatch, getState) => {
+// to be fixed as a static app info endpoint to register the application
+const constantAppInfoUrl = 'http://localhost:3013/api/appInfo';
+
+export const registerApplication = () => (dispatch, getState) => {
 	dispatch(registerApplicationFetch());
 
-	try {
-		const response = await request.get('/api');
-		dispatch(receiveAllNewsListSuccess(response));
-	} catch (err) {
-		dispatch(receiveAllNewsListFail(err));
-	}
+	const requester = request.get({
+		url: constantAppInfoUrl,
+	});
+
+	requester.then(response => {
+		const { data } = response;
+		dispatch(registerApplicationSuccess(data));
+	})
+	.catch(err => {
+		dispatch(registerApplicationFail(err));
+	})
 };

@@ -16,7 +16,7 @@ const create = (initialState = {}) => createStore(
     reducers,
     Immutable.fromJS(initialState), // Hydrate the store with server-side data
     composeWithDevTools(
-      applyMiddleware(createLogger({ stateTransformer: state => state.toJS() }, thunk))
+      applyMiddleware(createLogger({ stateTransformer: state => state.toJS() }), thunk)
     ),
 );
 

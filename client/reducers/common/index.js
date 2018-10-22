@@ -4,7 +4,7 @@ const CommonState = Immutable.fromJS({
 	application: {
 	    isLoading: false,
 	    isSuccess: false,
-		appToken: null,
+		appInfo: null,
 	},
 });
 

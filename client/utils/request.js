@@ -1,18 +1,24 @@
-import {
-  post,
-  get,
-} from 'axios';
+import axios from 'axios';
 import {
   stringify,
 } from 'qs';
 
-const get = async ({ url, param }) => (
-    await get(`${url}?${stringify(param)}`);
-);
+const getRequest = ({ url, params= {} }) => {
+    return axios({
+	    method: 'GET',
+	    params,
+	    url,
+	});
+};
 
-const get = async ({ url, param, options = {} }) => (
-    await post(`${url}`, stringify(param), options);
-);
+const postRequest = ({ url, params = {}, data = {} }) => {
+    return axios({
+	    method: 'post',
+		url,
+		params,
+		data,
+	});
+};
 // const handleExpiredToken = () => {
 //   const cookie = new Cookie();
 //   const admin = cookie.get('admin', { path: '/' });
@@ -24,6 +30,6 @@ const get = async ({ url, param, options = {} }) => (
 // };
 
 export default {
-  get,
-  post,
+  get: getRequest,
+  post: postRequest,
 };

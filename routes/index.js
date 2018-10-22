@@ -18,12 +18,21 @@
  * http://expressjs.com/api.html#app.VERB
  */
 const keystone      = require('keystone');
+const moment        = require('moment');
 const url           = require('url');
 
-const conf          = require(`${global.__base}/config`);
+const { 
+	appDomain,
+} = require(`${global.__base}/config`);
 
-const { initLocals } = require('./middleware');
-const { sendGetRes } = require('./lib/APIRequestHelper');
+const { initLocals } = require(`${global.__base}/routes/middleware`);
+
+// API Set
+const RESTFullAPIV1 = require(`${global.__base}/routes/RESTFulAPI/v1`);
+const ClientAPI = require(`${global.__base}/routes/ClientAPI`);
+
+const { sendGetRes }      = require(`${global.__base}/routes/lib/APIRequestHelper`);
+const { generateToken }      = require(`${global.__base}/routes/lib/Authentication`);
 
 // Common Middleware
 keystone.pre('routes', initLocals);
@@ -31,20 +40,20 @@ keystone.pre('routes', initLocals);
 // Setup Route Bindings
 exports = module.exports = nextApp => app => {
 
-    const handle = nextApp.getRequestHandler();
-
-    // REST API routings
-    app.get('/api', (req, res) => {
+	app.get('/api/appInfo', (req, res) => {
         const data = {
-            status: true,
+            'app-token': generateToken({
+                timestamp: moment(),
+                version: 'v1',
+            }),
+            endpoint: '/api/v1',
+            domain: appDomain,
         };
         sendGetRes(req, res, data);
     });
+    // REST API Version 1 routings
+    RESTFullAPIV1(app);
 
     // Frontend routings
-    app.get('/aboutus/:id', (req, res) => {
-        console.log('>>>>>>>>>>>>>>>>>');
-        return app.render(req, res, '/aboutus/', req.params);
-    });
-    app.get('*', handle);
+    ClientAPI(app, nextApp);
 };
