@@ -18,6 +18,8 @@
  * http://expressjs.com/api.html#app.VERB
  */
 const keystone      = require('keystone');
+const _replace      = require('lodash/replace');
+const _camelCase    = require('lodash/camelCase');
 const moment        = require('moment');
 const url           = require('url');
 
@@ -46,11 +48,20 @@ exports = module.exports = nextApp => app => {
                 timestamp: moment(),
                 version: 'v1',
             }),
-            endpoint: '/api/v1',
             domain: appDomain,
+            // return all of RESTful API endpoint to the client with Camel Case
+            api: app._router.stack
+                .filter(r => 
+                    r.route && r.route.path 
+                    && /^\/api\/v1\//.test(r.route.path))
+                .reduce((a, b) => {
+                    a[_camelCase(_replace(b.route.path , '/', ''))] = `${appDomain}${b.route.path}`;
+                    return a;
+                }, {}),
         };
         sendGetRes(req, res, data);
     });
+
     // REST API Version 1 routings
     RESTFullAPIV1(app);
 

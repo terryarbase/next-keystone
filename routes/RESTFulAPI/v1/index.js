@@ -19,4 +19,10 @@ exports = module.exports = app => {
         };
         sendGetRes(req, res, data);
     });
+    app.get('/api/v1/current', (req, res) => {
+        const data = {
+            timestamp: moment(),
+        };
+        sendGetRes(req, res, data);
+    });
 };

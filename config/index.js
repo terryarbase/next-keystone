@@ -27,7 +27,7 @@ const localhostSetting = {
     dbUser: '[dbusername]',
     dbPassword: '[dbpassword]',
     dbPort: 27017,
-    appDomain: 'http://localhost:3013/',
+    appDomain: 'http://localhost:3013',
     securePort: 3001,
     enableHttp: true,
 
@@ -41,7 +41,7 @@ const development4DSetting = {
     dbUser: '[dbusername]',
     dbPassword: '[dbpassword]',
     dbPort: 27017,
-    appDomain: 'http://localhost:3013/',
+    appDomain: 'http://localhost:3013',
     securePort: 3001,
     enableHttp: true,
 };
@@ -54,7 +54,7 @@ const betaSetting = {
     dbUser: '[dbusername]',
     dbPassword: '[dbpassword]',
     dbPort: 27017,
-    appDomain: 'http://localhost:3013/',
+    appDomain: 'http://localhost:3013',
     securePort: 3001,
     enableHttp: true,
 };
@@ -67,7 +67,7 @@ const developmentSetting = {
     dbUser: '[dbusername]',
     dbPassword: '[dbpassword]',
     dbPort: 27017,
-    appDomain: 'http://localhost:3013/',
+    appDomain: 'http://localhost:3013',
     securePort: 3001,
     enableHttp: true,
 };
@@ -80,7 +80,7 @@ const productionSetting = {
     dbUser: '[dbusername]',
     dbPassword: '[dbpassword]',
     dbPort: 27017,
-    appDomain: 'http://localhost:3013/',
+    appDomain: 'http://localhost:3013',
     securePort: 3001,
     enableHttp: true,
 };
