@@ -42,5 +42,9 @@ exports = module.exports = nextApp => app => {
     });
 
     // Frontend routings
+    app.get('/aboutus/:id', (req, res) => {
+        console.log('>>>>>>>>>>>>>>>>>');
+        return app.render(req, res, '/aboutus/', req.params);
+    });
     app.get('*', handle);
 };
