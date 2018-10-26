@@ -8,9 +8,9 @@
  */
 
 
-const keystone = require('keystone');
-const User = keystone.list('User');
-const Role = keystone.list('Role');
+const nextnode = require('next-nodecms');
+const User = nextnode.list('User');
+const Role = nextnode.list('Role');
  
 module.exports = async(done) => {
     const adminRole = new Role.model({
