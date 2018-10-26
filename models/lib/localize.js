@@ -1,7 +1,7 @@
 const _ = require('lodash');
-const keystone = require('keystone');
+const nextnode = require('next-nodecms');
 
-const Types = keystone.Field.Types;
+const Types = nextnode.Field.Types;
 
 const Locale = require(`${global.__base}/types/Locale`);
 

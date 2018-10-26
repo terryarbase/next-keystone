@@ -1,14 +1,14 @@
 [{
-  "name"        : "next_keystone",
-  "script"      : "keystone.js",
+  "name"        : "next-keystone",
+  "script"      : "index.js",
   "args"        : "[]",
   "ignoreWatch" : ["node_modules", "public"],
   "watch"       : "true",
   "exec_mode"  : "cluster_mode",
   "instances"  : "max",  
   "log_date_format": "YYYY-MM-DD HH:mm:ss:SSS Z",
-  "error_file" : "/var/log/pm2/next_keystone-err.log",
-  "out_file"   : "/var/log/pm2/next_keystone-out.log",
+  "error_file" : "/var/log/pm2/next-keystone-err.log",
+  "out_file"   : "/var/log/pm2/next-keystone-out.log",
   "env": {
         "NODE_ENV":"development",
         "APP_ENV":"development",

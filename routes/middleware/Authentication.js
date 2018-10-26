@@ -1,8 +1,8 @@
-const keystone 	= require('keystone');
+const nextnode 	= require('next-nodecms');
 const jwt 		= require('jsonwebtoken');
 
 const generateToken = payload => {
-	return jwt.sign(payload, keystone.get('cookie secret'), {
+	return jwt.sign(payload, nextnode.get('cookie secret'), {
 		expiresIn: '1h'
 	});
 }
@@ -10,7 +10,7 @@ const generateToken = payload => {
 const validateToken = token => {
 	var verify_ans;
 	try {
-		verify_ans = jwt.verify(token, keystone.get('cookie secret'));
+		verify_ans = jwt.verify(token, nextnode.get('cookie secret'));
 	}
 	catch(err){
 		console.log('auth.js -> validateToken -> err:', err);
@@ -27,7 +27,7 @@ const refreshToken = authorization =>  {
         countryCode: payload.countryCode,
         phone: payload.phone
 	};
-	return jwt.sign(newPayload, keystone.get('cookie secret'), {
+	return jwt.sign(newPayload, nextnode.get('cookie secret'), {
 		expiresIn: '1h',
 	});
 }

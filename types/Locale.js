@@ -6,7 +6,6 @@
  *  @description
  *  Immutable file for Localizations
  */
-const keystone = require('keystone');
 const { Map } = require('immutable');
 
 const Locale = Map({

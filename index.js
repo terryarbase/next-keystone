@@ -1,5 +1,5 @@
-// Require keystone
-const keystone = require('keystone');
+// Require nextnode
+const nextnode = require('next-nodecms');
 const constants = require('constants');
 // store the base path
 global.__base = __dirname;
@@ -25,9 +25,9 @@ if (dbAuthEnable) {
     dbUrl = `mongodb://${dbUser}:${dbPassword}@${dbHost}/${dbName}`;
 }
 
-keystone.init({
-    'name': 'Next Keystone Content Management',
-    'brand': 'Next Keystone Content Management',
+nextnode.init({
+    'name': 'Next Node Content Management System',
+    'brand': 'Next Node Content Management System',
     'mongo': dbUrl,
     'port': port,
     'back url': true,
@@ -70,30 +70,30 @@ const app = next({ dev });
 app.prepare().then(() => {
 
     // Load your project's Models
-    keystone.import('models');
+    nextnode.import('models');
     /*
      ** SSL Protocol Config (Self signed Certificate)
      ** Only serve for all of Envs except Production Env
      */
     if (process.env.APP_ENV !== 'production') {
-        //keystone.set('log config', true);
-        // keystone.set('ssl', true);
-        // keystone.set('ssl key', 'private/selfsigned.key');
-        // keystone.set('ssl cert', 'private/selfsigned.crt');
-        // keystone.set('ssl port', securePort);
+        //nextnode.set('log config', true);
+        // nextnode.set('ssl', true);
+        // nextnode.set('ssl key', 'private/selfsigned.key');
+        // nextnode.set('ssl cert', 'private/selfsigned.crt');
+        // nextnode.set('ssl port', securePort);
         /*
          ** SSL & TSL Config
          */
         // disable SSL 2.0 and SSL 3.01
-        keystone.set('ssl secureOptions',
+        nextnode.set('ssl secureOptions',
             constants.SSL_OP_NO_SSLv3 |
             constants.SSL_OP_NO_SSLv2 |
             constants.SSL_OP_NO_TLSv1 |
             constants.SSL_OP_NO_TLSv1_1
         );
         // use TSL 1.2 instead
-        keystone.set('ssl secureProtocol', 'TLSv1_2_method');
-        keystone.set('ssl ciphers', [
+        nextnode.set('ssl secureProtocol', 'TLSv1_2_method');
+        nextnode.set('ssl ciphers', [
             'ECDHE-RSA-AES128-GCM-SHA256',
             'ECDHE-ECDSA-AES128-GCM-SHA256',
             'ECDHE-RSA-AES256-GCM-SHA384',
@@ -123,11 +123,11 @@ app.prepare().then(() => {
     // for each request) should be added to ./routes/middleware.js
 
     // Load your project's Routes
-    keystone.set('routes', require(`${global.__base}/routes`)(app));
-    keystone.set('pre:dynamic', require(`${global.__base}/utils/helper/BindBodyParser`)); // this is required for audit-trail plugin; should be removed/implemented in other way.
+    nextnode.set('routes', require(`${global.__base}/routes`)(app));
+    nextnode.set('pre:dynamic', require(`${global.__base}/utils/helper/BindBodyParser`)); // this is required for audit-trail plugin; should be removed/implemented in other way.
 
     // Configure the navigation bar in Keystone's Admin UI
-    keystone.set('nav', {
+    nextnode.set('nav', {
         userManagemnt: [
         	'Role',
         	'User',
@@ -135,7 +135,7 @@ app.prepare().then(() => {
     });
 
     // Start Keystone to connect to your database and initialise the web server
-    keystone.start({
+    nextnode.start({
         onHttpsServerCreated: () => {},
         onHttpServerCreated: () => {},
     });

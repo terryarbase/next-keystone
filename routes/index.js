@@ -17,7 +17,7 @@
  * See the Express application routing documentation for more information:
  * http://expressjs.com/api.html#app.VERB
  */
-const keystone      = require('keystone');
+const nextnode      = require('next-nodecms');
 const _replace      = require('lodash/replace');
 const _camelCase    = require('lodash/camelCase');
 const moment        = require('moment');
@@ -37,7 +37,7 @@ const { sendGetRes }      = require(`${global.__base}/routes/lib/APIRequestHelpe
 const { generateToken }      = require(`${global.__base}/routes/lib/Authentication`);
 
 // Common Middleware
-keystone.pre('routes', initLocals);
+nextnode.pre('routes', initLocals);
 
 // Setup Route Bindings
 exports = module.exports = nextApp => app => {

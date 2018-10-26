@@ -1,20 +1,20 @@
-const keystone = require('keystone');
+const nextnode = require('next-nodecms');
 const _ = require('lodash');
 const jsonpatch = require('fast-json-patch');
 const Joi = require('joi');
 
-const utils = keystone.utils;
+const utils = nextnode.utils;
 
 class EnhancedList {
     constructor(listName, listOptions = {}) {
-        const keystoneList = new keystone.List(listName, listOptions);
-        // console.log('>>>>>>>>>>>', listName, keystoneList);
+        const nextnodeList = new nextnode.List(listName, listOptions);
+        // console.log('>>>>>>>>>>>', listName, nextnodeList);
         const resourceName = listName.toLowerCase();
 
         this._name = resourceName;
         this._language = 'zh-HK';
         this._pluralizedName = utils.plural(resourceName);
-        this._keystoneList = keystoneList;
+        this._nextnodeList = nextnodeList;
         this._model = null;
         this._defaultSelectOption = null;
         this._defaultSortOption = null;
@@ -52,8 +52,8 @@ class EnhancedList {
         this._searchKeyword = keyword;
     }
 
-    get keystoneList() {
-        return this._keystoneList;
+    get nextnodeList() {
+        return this._nextnodeList;
     }
 
     get model() {
@@ -101,17 +101,17 @@ class EnhancedList {
     }
 
     add() {
-        this._keystoneList.add(...arguments);
+        this._nextnodeList.add(...arguments);
     }
 
     register() {
-        // this._keystoneList.schema.query.customPopulate =
+        // this._nextnodeList.schema.query.customPopulate =
         //     MongooseQueryHelper.customPopulate;
 
-        this._keystoneList.register();
+        this._nextnodeList.register();
 
-        this._model = this._keystoneList.model;
-        keystone.enhancedList().push(this);
+        this._model = this._nextnodeList.model;
+        nextnode.enhancedList().push(this);
     }
 
     addChildResource(resource) {
@@ -124,7 +124,7 @@ class EnhancedList {
             .findOne({
                 _id: id
             })
-            .customPopulate(populateOption, this._keystoneList)
+            .customPopulate(populateOption, this._nextnodeList)
             .select(this.defaultSelectOption);
     }
 
@@ -132,7 +132,7 @@ class EnhancedList {
         return this._model
             .find(findOption)
             .select(this.defaultSelectOption)
-            .customPopulate(populateOption, this._keystoneList)
+            .customPopulate(populateOption, this._nextnodeList)
             .sort(sortOption || this.defaultSortOption);
     }
 
@@ -143,14 +143,14 @@ class EnhancedList {
             paginateOption
         );
         return new Promise((resolve, reject) => {
-            this._keystoneList
+            this._nextnodeList
                 .paginate({
                     page,
                     perPage,
                     filters: findOption
                 })
                 .select(this.defaultSelectOption)
-                .customPopulate(populateOption, this._keystoneList)
+                .customPopulate(populateOption, this._nextnodeList)
                 .sort(sortOption || this.defaultSortOption)
                 .lean()
                 .exec((err, results) => {

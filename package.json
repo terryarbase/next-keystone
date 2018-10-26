@@ -1,5 +1,5 @@
 {
-  "name": "next_keystone",
+  "name": "next-keystone",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -24,7 +24,6 @@
     "jade": "^1.11.0",
     "joi": "^10.6.0",
     "jsonwebtoken": "^8.1.1",
-    "keystone": "git://github.com/terryarbase/keystone.git#v4.0.0-beta.8v-merge",
     "li": "^1.2.1",
     "lodash": "^4.17.4",
     "md5": "2.2.1",
@@ -34,6 +33,7 @@
     "multer": "0.1.8",
     "mysql": "^2.15.0",
     "next": "^7.0.1",
+    "next-nodecms": "^1.0.0",
     "next-redux-wrapper": "^2.0.0",
     "node-sass": "^4.9.4",
     "node-sass-middleware": "^0.11.0",
@@ -83,6 +83,6 @@
     "lint": "eslint .",
     "build": "next build",
     "lint-fix": "eslint . --fix",
-    "start": "nodemon -w node keystone.js"
+    "start": "nodemon -w node index.js"
   }
 }

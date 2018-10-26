@@ -7,7 +7,7 @@
  * you have more middleware you may want to group it as separate
  * modules in your project's /lib directory.
  */
-const keystone = require('keystone');
+const nextnode = require('next-nodecms');
 /**
 	Initialises the standard view locals
 
@@ -27,7 +27,7 @@ exports.initLocals = (req, res, next) => {
 exports.requireUser = (req, res, next) => {
     if (!req.user) {
         req.flash('error', 'Please sign in to access this page.');
-        res.redirect('/keystone/signin');
+        res.redirect(`/${nextnode.get('admin path')}/signin`);
     } else {
         next();
     }

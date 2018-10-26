@@ -1,6 +1,6 @@
-const keystone = require('keystone');
+const nextnode = require('next-nodecms');
 const moment = require('moment');
-const Types = keystone.Field.Types;
+const Types = nextnode.Field.Types;
 const {
     crmLockMax,
     crmLockMin,
@@ -9,7 +9,7 @@ const {
  * User Model
  * ==========
  */
-const User = new keystone.List('User', {
+const User = new nextnode.List('User', {
     track: true,
     history: true,
     searchFields: 'name, email',

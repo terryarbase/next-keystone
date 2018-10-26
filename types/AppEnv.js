@@ -6,7 +6,6 @@
  *  @description
  *  Immutable file for Server App Env
  */
-const keystone = require('keystone');
 const { Map } = require('immutable');
 
 const AppEnv = Map({
