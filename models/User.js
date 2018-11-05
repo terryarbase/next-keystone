@@ -34,7 +34,7 @@ User.add(
     },
     'Permissions',
     {
-        isAdmin: { type: Boolean, label: 'Can access Keystone', default: false, index: true, initial: true }
+        isAdmin: { type: Boolean, label: 'Can Access Backend', default: false, index: true, initial: true, realedit: true }
     }
 );
 
