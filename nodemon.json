@@ -1,6 +1,6 @@
 {
     "verbose": true,
     "ignore": ["node_modules", ".next"],
-    "watch": ["routes/*", "components/*", "client/*", "pages/*", "keystone.js", "static/styles/*"],
+    "watch": ["node_modules/nextnode/*", "routes/*", "components/*", "client/*", "pages/*", "index.js", "static/styles/*"],
     "ext": "js json"
 }

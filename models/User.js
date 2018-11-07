@@ -27,14 +27,27 @@ User.add(
             required: true,
             index: true
         },
-        lastLoginAt: { type: Types.Datetime },
+        lastLoginAt: { type: Types.Datetime, noedit: true },
         password: { type: Types.Password, initial: true, required: true },
         incorrectPassword: {type: Types.Number, default: 0, note: 'Please reset to 0 count if you want to unlock the user manually.' }, // if 5, update lockedAt 
         lockedAt: { type: Types.Datetime, noedit: true }, // After 24 hours, auto unlock (reset incorrectCount and lockedAt)
+        delegated: { 
+            type: Types.Boolean,
+            noedit: true,
+            hidden: true, 
+        },
     },
     'Permissions',
     {
-        isAdmin: { type: Boolean, label: 'Can Access Backend', default: false, index: true, initial: true, realedit: true }
+        isAdmin: {
+            type: Boolean,
+            label: 'Can Access Backend',
+            default: false,
+            index: true,
+            initial: true,
+            realedit: true,
+            restrictDelegated: true,
+        }
     }
 );
 
