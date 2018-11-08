@@ -59,6 +59,8 @@ nextnode.init({
         User: true,
         Role: true,
     },
+    localization: true,
+    locale: 'en',
     'cookie secret': cookieSecret,
     enhancedList: [],
 });
@@ -128,7 +130,7 @@ app.prepare().then(() => {
 
     // Configure the navigation bar in Keystone's Admin UI
     nextnode.set('nav', {
-        userManagemnt: [
+        account: [
         	'Role',
         	'User',
         ],
