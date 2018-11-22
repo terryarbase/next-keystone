@@ -17,6 +17,11 @@ const commonSetting = {
     attachmentMineTypeAllowed: ['application/pdf'],
     cookieSecret: 'OdFT|KznqROQfMXNP8[KN>.>7Wm3tvAUp+c+8yG:d8J!Ix[iT^[Zvm*8&wc=,',
     adminPath: 'webadmin',
+
+    cloudinaryCloudName: 'fourplay',
+    cloudinaryApiKey: '711252687497722',
+    cloudinaryApiSecret: 'fg2ke9PXg2Xqv2bQGvLvTIy0y8M',
+    cloudinaryFolder: 'mtgameresport_dev',
 };
 
 const localhostSetting = {

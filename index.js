@@ -18,6 +18,10 @@ const {
     cookieSecret,
     adminPath,
     appDomain,
+    cloudinaryCloudName,
+    cloudinaryApiKey,
+    cloudinaryApiSecret,
+    cloudinaryFolder,
 } = configuration;
 
 var dbUrl = `mongodb://${dbHost}/${dbName}`;
@@ -57,13 +61,25 @@ nextnode.init({
     },
     'role list': {
         User: true,
+        TestMultilingual: true,
         Role: true,
     },
     localization: true,
-    locale: 'en',
+    locale: 'zhtw',
     'cookie secret': cookieSecret,
     enhancedList: [],
 });
+// setup cloudary account
+nextnode.set('cloudinary config', {
+    cloud_name: cloudinaryCloudName,
+    api_key: cloudinaryApiKey,
+    api_secret: cloudinaryApiSecret
+});
+// will prefix all built-in tags
+nextnode.set('cloudinary prefix', cloudinaryFolder);
+// will prefix each image public_id with [{prefix}]/{list.path}/{field.path}/
+nextnode.set('cloudinary folders', true);
+
 // Next app
 const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
@@ -133,6 +149,7 @@ app.prepare().then(() => {
         account: [
         	'Role',
         	'User',
+            'TestMultilingual',
         ],
     });
 
