@@ -43,7 +43,7 @@ nextnode.init({
     'views': 'templates/views',
     'view engine': 'pug',
 
-    'auto update': true,
+    'auto update': false,
 
     'session store': 'mongo',
     'session store options': {
