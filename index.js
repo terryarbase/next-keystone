@@ -37,6 +37,7 @@ nextnode.init({
     'back url': true,
     'front url': appDomain,
     'signin logo': '/images/logo.png',
+    'project root': `${global.__base}`,
     // 'sass': 'public',
     'static': `${global.__base}/static`,
     'favicon': `${global.__base}/static/favicon.ico`,
@@ -68,6 +69,16 @@ nextnode.init({
     locale: 'zhtw',
     'cookie secret': cookieSecret,
     enhancedList: [],
+    'customized signin': {
+        file: `${keystone.get('project root')}/client/Login/index.js`,
+        out: 'client/Login/index.js',
+        routing: '/js/login.js',
+    },
+    'customized admin': {
+        file: `${keystone.get('project root')}/client/Admin/index.js`,
+        out: 'client/Admin/index.js',
+        routing: '/js/app.js',
+    },
 });
 // setup cloudary account
 nextnode.set('cloudinary config', {
@@ -81,11 +92,11 @@ nextnode.set('cloudinary prefix', cloudinaryFolder);
 nextnode.set('cloudinary folders', true);
 
 // Next app
-const next = require('next');
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
+// const next = require('next');
+// const dev = process.env.NODE_ENV !== 'production';
+// const app = next({ dev });
 
-app.prepare().then(() => {
+// app.prepare().then(() => {
 
     // Load your project's Models
     nextnode.import('models');
@@ -141,14 +152,12 @@ app.prepare().then(() => {
     // for each request) should be added to ./routes/middleware.js
 
     // Load your project's Routes
-    nextnode.set('routes', require(`${global.__base}/routes`)(app));
+    nextnode.set('routes', require(`${global.__base}/routes`));
     nextnode.set('pre:dynamic', require(`${global.__base}/utils/helper/BindBodyParser`)); // this is required for audit-trail plugin; should be removed/implemented in other way.
 
     // Configure the navigation bar in Keystone's Admin UI
     nextnode.set('nav', {
-        account: [
-        	'Role',
-        	'User',
+        test: [
             'TestMultilingual',
         ],
     });
@@ -158,4 +167,4 @@ app.prepare().then(() => {
         onHttpsServerCreated: () => {},
         onHttpServerCreated: () => {},
     });
-});
+// });

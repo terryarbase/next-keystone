@@ -26,42 +26,69 @@ const TestMultilingual = new nextnode.List('TestMultilingual', {
 // format should be 'DD-MMM-YYYY h:mm a'
 TestMultilingual.add(
     {
-        username: {
-            type: Types.Text,
-            required: true,
-            initial: true,
-            index: true,
-            label: 'Login Name',
-        },
-        textarea: {
-            type: Types.Textarea,
-            index: true,
-        },
-        html: {
-            type: Types.Html,
-            wysiwyg: true,
-            index: true,
-        },
-        url: {
-            type: Types.Url,
-            index: true,
-        },
-        name: {
-            type: Types.Name,
-            index: true,
-        },
-        activate: {
-            type: Types.Boolean,
-            realedit: true,
+        // username: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        // userna4me: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        // usernam2e: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        // usernam3e: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        // date: {
+        //     type: Types.DateRange,
+        // },
+        // use1rname: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        // use4rname: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        // user6name: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        // user8name: {
+        //     type: Types.Text,
+        //     required: true,
+        //     initial: true,
+        //     index: true,
+        //     label: 'Login Name',
+        // },
+        date2: {
+            type: Types.DateTimeRange,
         },
 
-        thumbnail: {
-            type: Types.CloudinaryImages,
-            autoCleanup: true,
-            select: true,
-            selectPrefix: nextnode.get('cloudinary prefix') + '/',
-            multilingual: false,
-        },
     }
 );
 

@@ -1,6 +1,6 @@
 const withSass 	= require('@zeit/next-sass');
 const path 		= require('path');
-console.log(path.resolve(__dirname, 'static/styles'));
+// console.log(path.resolve(__dirname, 'static/styles'));
 
 module.exports = withSass({
 	cssModules: true,

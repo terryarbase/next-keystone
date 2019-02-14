@@ -1,0 +1,55 @@
+const nextnode = require('next-nodecms');
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = {
+    name: 'admin',
+    resolve: {
+        modules: ['node_modules'],
+    },
+    entry: {
+        // admin: [
+        //     'babel-polyfill',
+        //     'react-hot-loader/patch',
+        //     'webpack-hot-middleware/client?path=/__webpack_hmr_admin&name=admin&reload=false',
+        //     path.join(__dirname, './client/adminui/App/index.js')
+        // ],
+        login: [
+            'babel-polyfill',
+            'react-hot-loader/patch',
+            'webpack-hot-middleware/client?path=/__webpack_hmr_admin&name=admin&reload=false',
+            path.join(__dirname, './client/Signin/index.js')
+        ],
+    },
+    output: {
+        path: path.join(__dirname, 'static', nextnode.get('admin path'), 'js'),
+        filename: '[name].js',
+        chunkFilename: '[id].chunk.js',
+        publicPath: `/${nextnode.get('admin path')}/js/`
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'packages.js'
+        }),
+        new webpack.NamedModulesPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(true),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    }
+};

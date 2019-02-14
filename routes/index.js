@@ -20,6 +20,7 @@
 const nextnode      = require('next-nodecms');
 const _replace      = require('lodash/replace');
 const _camelCase    = require('lodash/camelCase');
+const browserify    = require('next-nodecms/admin/server/middleware/browserify');
 const moment        = require('moment');
 const url           = require('url');
 
@@ -38,9 +39,47 @@ const { generateToken }      = require(`${global.__base}/routes/lib/Authenticati
 
 // Common Middleware
 nextnode.pre('routes', initLocals);
-
 // Setup Route Bindings
-exports = module.exports = nextApp => app => {
+exports = module.exports = app => {
+    const options = {
+        outputPath: global.__base,
+        hash: nextnode.createKeystoneHash(),
+        writeToDisk: nextnode.get('cache admin bundles'),
+    };
+    const bundles = {
+        login: browserify({
+            ...options,
+            out: 'client/Login/index.js',
+            file: `${global.__base}/client/Login/index.js`,
+        }),
+        // admin: browserify({
+        //     ...options,
+        //     file: `${global.__base}/client/Admin/index.js`,
+        // }),
+    };
+    bundles.login.build();
+   // bundles.admin.build();
+    // app.get('/js/app.js', bundles.admin.serve);
+    // const webpackDevMiddleware = require('webpack-dev-middleware');
+    // const webpackHotMiddleware = require('webpack-hot-middleware');
+    // const config = require('./../webpack.admin.config.js');
+    // const compiler = webpack(config);
+    // const middleware = webpackDevMiddleware(compiler, {
+    //     publicPath: config.output.publicPath,
+    //     stats: {
+    //         colors: true,
+    //         timings: true,
+    //         chunks: false,
+    //         chunkModules: false,
+    //         modules: false
+    //     }
+    // });
+
+    // webpackDevMiddlewares.login = middleware;
+    // webpackHotMiddlewares.login = webpackHotMiddleware(
+    //     compiler,
+    //     hotMiddlewareOptions
+    // );
 
 	app.get('/api/appInfo', (req, res) => {
         const data = {
@@ -66,5 +105,5 @@ exports = module.exports = nextApp => app => {
     RESTFullAPIV1(app);
 
     // Frontend routings
-    ClientAPI(app, nextApp);
+    // ClientAPI(app, nextApp);
 };
