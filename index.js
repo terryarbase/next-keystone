@@ -70,14 +70,12 @@ nextnode.init({
     'cookie secret': cookieSecret,
     enhancedList: [],
     'customized signin': {
-        file: `${keystone.get('project root')}/client/Login/index.js`,
+        file: `${global.__base}/client/Login/index.js`,
         out: 'client/Login/index.js',
-        routing: '/js/login.js',
     },
     'customized admin': {
-        file: `${keystone.get('project root')}/client/Admin/index.js`,
+        file: `${global.__base}/client/Admin/index.js`,
         out: 'client/Admin/index.js',
-        routing: '/js/app.js',
     },
 });
 // setup cloudary account

@@ -7,6 +7,7 @@ import React from 'react';
 import { Container } from './elemental';
 import { Link } from 'react-router';
 import { css } from 'glamor';
+import { hot } from 'react-hot-loader/root';
 
 import MobileNavigation from './components/Navigation/Mobile';
 import AdminMenuNav from './components/Navigation/AdminMenu/AdminMenuNav';
@@ -120,4 +121,4 @@ const App = (props) => {
 	);
 };
 
-module.exports = App;
+module.exports = hot(App);

@@ -6,6 +6,7 @@ import assign from 'object-assign';
 import classnames from 'classnames';
 import React from 'react';
 import xhr from 'xhr';
+import { hot } from 'react-hot-loader/root';
 
 import Alert from './components/Alert';
 import Brand from './components/Brand';
@@ -126,8 +127,8 @@ var SigninView = React.createClass({
 					</div>
 				</div>
 				<div className="auth-footer">
-					<span>Powered by </span>
-					<a href="http://keystonejs.com" target="_blank" title="The Node.js CMS and web application platform (new window)">KeystoneJS</a>
+					<span>Created by </span>
+					<a href="https://www.4d.com.hk/" target="_blank" title="Four Directions – Mobile Application Consultancy">Four Directions – Mobile Application Consultancy</a>
 				</div>
 			</div>
 		);
@@ -135,4 +136,4 @@ var SigninView = React.createClass({
 });
 
 
-module.exports = SigninView;
+module.exports = hot(SigninView);

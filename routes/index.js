@@ -41,25 +41,6 @@ const { generateToken }      = require(`${global.__base}/routes/lib/Authenticati
 nextnode.pre('routes', initLocals);
 // Setup Route Bindings
 exports = module.exports = app => {
-    const options = {
-        outputPath: global.__base,
-        hash: nextnode.createKeystoneHash(),
-        writeToDisk: nextnode.get('cache admin bundles'),
-    };
-    const bundles = {
-        login: browserify({
-            ...options,
-            out: 'client/Login/index.js',
-            file: `${global.__base}/client/Login/index.js`,
-        }),
-        // admin: browserify({
-        //     ...options,
-        //     file: `${global.__base}/client/Admin/index.js`,
-        // }),
-    };
-    bundles.login.build();
-   // bundles.admin.build();
-    // app.get('/js/app.js', bundles.admin.serve);
     // const webpackDevMiddleware = require('webpack-dev-middleware');
     // const webpackHotMiddleware = require('webpack-hot-middleware');
     // const config = require('./../webpack.admin.config.js');
