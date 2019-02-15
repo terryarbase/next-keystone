@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import evalDependsOn from '../../../../../../fields/utils/evalDependsOn';
+import evalDependsOn from 'next-nodecms/fields/utils/evalDependsOn';
 
 module.exports = React.createClass({
 	displayName: 'FormHeading',
